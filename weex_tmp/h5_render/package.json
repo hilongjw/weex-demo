@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "name": "weex-html5",
+        "raw": "weex-html5@^0.2.14",
+        "rawSpec": "^0.2.14",
+        "scope": null,
+        "spec": ">=0.2.14 <0.3.0",
+        "type": "range"
+      },
+      "/usr/local/lib/node_modules/weex-toolkit"
+    ]
+  ],
+  "_from": "weex-html5@>=0.2.14 <0.3.0",
+  "_id": "weex-html5@0.2.17",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/weex-toolkit/weex-html5",
+  "_nodeVersion": "4.2.1",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/weex-html5-0.2.17.tgz_1465401234376_0.8364253635518253"
+  },
+  "_npmUser": {
+    "email": "tekkahs@gmail.com",
+    "name": "mr.raindrop"
+  },
+  "_npmVersion": "2.14.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "weex-html5",
+    "raw": "weex-html5@^0.2.14",
+    "rawSpec": "^0.2.14",
+    "scope": null,
+    "spec": ">=0.2.14 <0.3.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/weex-toolkit"
+  ],
+  "_resolved": "https://registry.npmjs.org/weex-html5/-/weex-html5-0.2.17.tgz",
+  "_shasum": "3e492ea3465e3d8e1c5dafdc04e1f4365ce20378",
+  "_shrinkwrap": null,
+  "_spec": "weex-html5@^0.2.14",
+  "_where": "/usr/local/lib/node_modules/weex-toolkit",
+  "contributors": [
+    {
+      "email": "tekkahs@gmail.com",
+      "name": "MrRaindrop"
+    }
+  ],
+  "dependencies": {
+    "serve": "^1.4.0"
+  },
+  "description": "weex html5 renderer",
+  "devDependencies": {
+    "uglifyjs": "^2.4.10",
+    "webpack": "^1.12.15"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "3e492ea3465e3d8e1c5dafdc04e1f4365ce20378",
+    "tarball": "https://registry.npmjs.org/weex-html5/-/weex-html5-0.2.17.tgz"
+  },
+  "license": "Apache-2.0",
+  "main": "dist/weex.js",
+  "maintainers": [
+    {
+      "email": "tekkahs@gmail.com",
+      "name": "mr.raindrop"
+    }
+  ],
+  "name": "weex-html5",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "https://alibaba.github.com/weex"
+  },
+  "scripts": {
+    "build": "webpack --config ./webpack.config.js",
+    "bundle": "npm run build && npm run compress",
+    "ci": "npm run lint",
+    "compress": "uglifyjs dist/weex.js -o dist/weex.min.js",
+    "dev": "webpack --watch --config ./webpack.config.js",
+    "lint": "jscs --config .jscsrc src/**/*.js src/*.js",
+    "serve": "serve ./ -p 12580",
+    "server": "serve ./ -p 12580"
+  },
+  "version": "0.2.17"
+}

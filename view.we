@@ -1,0 +1,79 @@
+<template>
+    <div class="wrapper">
+        <web class="content" id="webview" src='{{viewURL}}' onpagestart="startload" onpagefinish="finishload" onerror="failload"></web>
+    </div>
+</template>
+
+<style>
+    .wrapper { 
+        width: 750; 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        right: 0; 
+        bottom: 0;
+    }
+    .content { 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        right: 0; 
+        bottom: 0; 
+        margin-top: 0;  
+        margin-bottom: 0;
+    }
+    .toolbar { 
+        flex-direction: row; 
+        position: fixed; 
+        bottom: 0; 
+        left: 0; 
+        right: 0;  
+        height: 70;
+    }
+</style>
+
+<script>
+    require('weex-components');
+
+    module.exports = {
+        data: {
+            viewURL: ''
+        },
+        created: function () {
+            var bundleUrl = this.$getConfig().bundleUrl
+            try {
+                this.viewURL = bundleUrl.split('?viewurl=')[1];
+                console.log('-----', this.viewURL)
+            } catch (e) {
+                console.log('-----', e)
+                this.viewURL = 'http://qq.com'
+            }
+        },
+        methods: {
+            goback: function() {
+                var $webview = require('@weex-module/webview');
+                var webElement = this.$el('webview');
+                $webview.goBack(webElement.ref);           
+             },
+            goforward: function() {
+                var $webview = require('@weex-module/webview');
+                var webElement = this.$el('webview');
+                $webview.goForward(webElement.ref); 
+            },
+            refresh: function() {
+                var $webview = require('@weex-module/webview');
+                var webElement = this.$el('webview');
+                $webview.reload(webElement.ref); 
+            },
+            startload: function(e) {
+
+            },
+            finishload: function(e) {
+
+            },
+            failload: function(e) {
+
+            }
+        }
+    }
+</script>

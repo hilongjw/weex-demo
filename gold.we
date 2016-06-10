@@ -1,0 +1,282 @@
+<style>
+.list {
+    width: 750;
+    height: 1200;
+}
+
+.row {
+    width: 750;
+    background-color: #fafafa;
+    flex-direction: column;
+}
+
+.item {
+    background-color: #fff;
+    margin-bottom: 40;
+    border-bottom-width: 1;
+    border-bottom-color: #ccc;
+    padding-bottom: 10;
+}
+
+.item-title {
+    font-weight: blod;
+    font-size: 40;
+}
+
+.title-box {
+    position: relative;
+    padding-top: 10;
+    padding-left: 20;
+    padding-right: 70;
+}
+
+.content-box {
+    padding-top: 10;
+    padding-left: 20;
+    padding-right: 10;
+}
+
+.avatar-box {
+    position: absolute;
+    right: 20;
+    top: 10;
+    width: 50;
+    height: 50;
+    border-bottom-left-radius: 25;
+    border-bottom-right-radius: 25;
+    border-top-left-radius: 25;
+    border-top-right-radius: 25;
+}
+
+.avatar {
+    width: 50;
+    height: 50;
+}
+
+.tag-box {
+    positon: relative;
+    flex-direction: row;
+    min-height: 70;
+    padding-top: 10;
+    padding-left: 20;
+    padding-right: 80;
+}
+
+.tag-item {
+    margin-right: 10;
+    margin-top: 10;
+}
+
+.collection-icon {
+    width: 50;
+    height: 50;
+}
+
+.collection-box {
+    position: absolute;
+    right: 10;
+    flex-direction: row;
+}
+
+.collection-count-text {
+    font-size: 30;
+    margin-top: 10;
+    margin-left: 10;
+}
+</style>
+<template>
+    <div>
+        <list class="list" onloadmore="fetchData" loadmoreoffset=2000>
+            <cell class="row" repeat="{{itemList}}" index="{{$index}}">
+                <div class="item" onClick="goRead(url)">
+                    <div>
+                        <image style="width:800;height:300;" if="{{screenshot}}" src="{{screenshot.url}}"></image>
+                        <div>
+                            <div class="title-box">
+                                <text class="item-title">{{title}}</text>
+                                <div class="avatar-box">
+                                    <image class="avatar" if="{{user && user.avatar_large}}" src="{{user.avatar_large}}"></image>
+                                </div>
+                            </div>
+                            <div class="content-box">
+                                <text>{{contentFilter(content)}}</text>
+                            </div>
+                            <div class="tag-box">
+                                <div class="tag-item" repeat="{{tag in tagsTitleArray}}">
+                                    <text>{{tag}}</text>
+                                </div>
+                                <div class="collection-box">
+                                    <div class="collection-icon-box">
+                                        <image src="http://covteam.u.qiniudn.com/heart2.png" class="collection-icon"></image>
+                                    </div>
+                                    <div class="collection-count">
+                                        <text class="collection-count-text">23</text>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </cell>
+        </list>
+        </div>
+</template>
+<script>
+const GOLD_API = '__API__URL'
+module.exports = {
+    data: {
+        baseURL: '',
+        dir: 'examples',
+        itemList: [{
+            "tagsTitleArray": [
+                "Android",
+                "开源",
+                "Google"
+            ],
+            "category": "android",
+            "tags": {
+                "__type": "Relation",
+                "className": "Tag"
+            },
+            "hotIndex": 3839,
+            "viewsCount": 1667,
+            "subscribers": {
+                "__type": "Relation",
+                "className": "_User"
+            },
+            "collectionCount": 205,
+            "content": "带你学习了解 Google 新开元的 FlexboxLayout。",
+            "hot": false,
+            "original": true,
+            "type": "article",
+            "title": "Google 开源的 FlexboxLayout",
+            "author": "googdev",
+            "english": false,
+            "rankIndex": 0.038876303392851856,
+            "url": "https://gold.xitu.io/entry/5738887a71cfe40057038b8a/view",
+            "entryView": {
+                "__type": "Pointer",
+                "className": "EntryView",
+                "objectId": "57393a6a79bc44005c5f5b35"
+            },
+            "gfw": false,
+            "commentsCount": 0,
+            "user": {
+                "username": "googdev",
+                "avatar_large": "http://tp4.sinaimg.cn/2942550243/180/5679223253/1",
+                "avatar_hd": "http://tva1.sinaimg.cn/crop.0.0.180.180.180/af63c0e3jw1eaigs3bfuvj20500500so.jpg",
+                "objectId": "55fe1c23ddb263b5605b2c03",
+                "role": "editor",
+                "company": "薄荷科技",
+                "self_description": "微信公众账号: AndroidDeveloper「googdev」 | 个人博客: http://stormzhang.com",
+                "blogAddress": "http://stormzhang.com",
+                "totalHotIndex": 125411,
+                "postedEntriesCount": 31,
+                "collectedEntriesCount": 34,
+                "totalCollectionsCount": 4772,
+                "subscribedTagsCount": 12,
+                "followeesCount": 20,
+                "followersCount": 386
+            },
+            "subscribersCount": 0,
+            "screenshot": {
+                "__type": "File",
+                "id": "5738887a1ea4930064378e0e",
+                "name": "flexbox.jpg",
+                "url": "http://ac-mhke0kuv.clouddn.com/9fd3273139b7d8e2c3df.jpg"
+            },
+            "originalUrl": "http://mp.weixin.qq.com/s?__biz=MzA4NTQwNDcyMA==&mid=2650661681&idx=1&sn=b151aba0c5fb702492f6bbd82211988d#rd",
+            "objectId": "5738887a71cfe40057038b8a",
+            "createdAt": "2016-05-15T14:32:26.936Z",
+            "updatedAt": "2016-06-09T07:45:40.264Z",
+            "className": "Entry",
+            "createdAtString": "2016-05-15T14:32:26.936Z",
+            "updatedAtString": "2016-06-09T07:45:40.264Z",
+            "isCollected": false
+        }]
+    },
+    created: function() {
+        this.getBaseURL()
+        this.fetchData()
+    },
+    methods: {
+        add: function() {
+            this.count++
+                this.fetchData()
+        },
+        contentFilter: function(content) {
+            return content.slice(0, 80)
+        },
+        genFetchUri: function() {
+            if (this.itemList.length) {
+                return GOLD_API + this.itemList[this.itemList.length - 1].createdAtString
+            } else {
+                var now = new Date()
+                return GOLD_API + now.toISOString()
+            }
+        },
+        fetchData: function() {
+            var stream = require('@weex-module/stream');
+            var self = this;
+            var GET_URL = this.genFetchUri()
+
+            stream.sendHttp({
+                method: 'GET',
+                url: GET_URL
+            }, function(ret) {
+                console.log('get', ret);
+                self.json = ret;
+                try {
+                    if (self.itemList.length) {
+                        self.itemList = self.itemList.concat(JSON.parse(ret).data)
+                    } else {
+                        self.itemList = JSON.parse(ret).data
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
+
+            });
+
+        },
+        getBaseURL: function() {
+            var bundleUrl = this.$getConfig().bundleUrl;
+            bundleUrl = new String(bundleUrl);
+            console.log('hit', bundleUrl);
+            var nativeBase;
+            var isAndroidAssets = bundleUrl.indexOf('file://assets/') >= 0;
+
+            var isiOSAssets = bundleUrl.indexOf('file:///') >= 0 && bundleUrl.indexOf('WeexDemo.app') > 0;
+            if (isAndroidAssets) {
+                nativeBase = 'file://assets/';
+            } else if (isiOSAssets) {
+                // file:///var/mobile/Containers/Bundle/Application/{id}/WeexDemo.app/
+                // file:///Users/{user}/Library/Developer/CoreSimulator/Devices/{id}/data/Containers/Bundle/Application/{id}/WeexDemo.app/
+                nativeBase = bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1);
+            } else {
+                var host = 'localhost:12580';
+                var matches = /\/\/([^\/]+?)\//.exec(this.$getConfig().bundleUrl);
+                if (matches && matches.length >= 2) {
+                    host = matches[1];
+                }
+                nativeBase = 'http://' + host + '/' + this.dir + '/build/';
+            }
+            var h5Base = './index.html?page=./' + this.dir + '/build/';
+            // in Native
+            var base = nativeBase;
+            if (typeof window === 'object') {
+                // in Browser or WebView
+                base = h5Base;
+            }
+            this.baseURL = base;
+        },
+        goRead: function(url) {
+            var params = {
+                'url': this.baseURL + 'component/web-demo.js?viewurl='+ url
+            }
+            var navigator = require('@weex-module/navigator');
+            navigator.push(params, function(e) {
+                console.log(e)
+            });
+        }
+    }
+}
+</script>
